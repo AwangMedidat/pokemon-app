@@ -1,0 +1,61 @@
+<div *ngIf="pokemonDetails" class="container mt-5 mb-5">
+  <div class="card">
+    <div class="card-header text-center">
+      <h2>{{ capitalizeFirstLetter(pokemonDetails.data.name) }}</h2>
+    </div>
+    <div class="card-body text-center">
+      <img
+        [src]="pokemonDetails.data.sprites.other.home.front_default"
+        alt="{{ pokemonDetails.data.name }}"
+        class="pokemon-image"
+      />
+      <div class="mt-3">
+        <h5 class="card-subtitle">Height: {{ pokemonDetails.data.height }}</h5>
+        <h5 class="card-subtitle">Weight: {{ pokemonDetails.data.weight }}</h5>
+        <p class="card-text">
+          Types:
+          <span
+            *ngFor="let el of pokemonDetails.data.types"
+            class="badge bg-primary me-1"
+          >
+            {{ el.type.name }}
+          </span>
+        </p>
+        <div>
+          <h6 class="mt-3">Abilities:</h6>
+          <ul class="list-unstyled">
+            <li *ngFor="let ability of pokemonAbility">
+              <h6>{{ ability.name }}</h6>
+              <p>{{ ability.effect_entries[0].short_effect }}</p>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h6 class="mt-3">Stats:</h6>
+          <div class="row">
+            <div
+              class="col-sm-4"
+              *ngFor="let stat of pokemonDetails.data.stats"
+            >
+              <p class="mb-0">{{ stat.stat.name }}:</p>
+              <div class="progress">
+                <div
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  [style.width.%]="stat.base_stat / 2"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  {{ stat.base_stat }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted text-center">
+      <a [routerLink]="['/']" class="btn btn-secondary">Back to Home</a>
+    </div>
+  </div>
+</div>

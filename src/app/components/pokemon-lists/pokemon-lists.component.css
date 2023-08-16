@@ -1,0 +1,15 @@
+.spaced-card {
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  transition: background-color 0.3s;
+}
+
+.card-img-top {
+  width: 180px;
+  height: 150px;
+}
+
+.spaced-card:hover {
+  background-color: #36628f;
+}
