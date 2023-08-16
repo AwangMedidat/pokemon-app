@@ -3,6 +3,7 @@
   width: 200px;
   height: 200px;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .card-img-top {
@@ -19,4 +20,8 @@
 .spaced-card:hover {
   background-color: #36628f;
   color: #e9ecf0;
+}
+
+.page-link {
+  cursor: pointer;
 }
