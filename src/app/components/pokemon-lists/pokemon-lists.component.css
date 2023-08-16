@@ -10,6 +10,13 @@
   height: 150px;
 }
 
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .spaced-card:hover {
   background-color: #36628f;
+  color: #e9ecf0;
 }
