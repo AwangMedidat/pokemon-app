@@ -2,8 +2,8 @@
   <!-- First Row -->
   <div class="row">
     <div class="col-md-4 col-sm-4 col-lg-2 c1">
-      <div class="card spaced-card">
-        <div class="p-5">
+      <div class="card">
+        <div class="p-3">
           <div class="card-body text-center">
             <div *ngIf="selectedPokemon; else noStats">
               <h5 class="text-center">
@@ -42,8 +42,8 @@
       </div>
     </div>
     <div class="col-md-4 col-sm-4 col-lg-2 c2">
-      <div class="card spaced-card">
-        <div class="p-5">
+      <div class="card">
+        <div class="p-3">
           <div class="card-body text-center">
             <div *ngIf="selectedPokemon2; else noStats2">
               <h5 class="text-center">
@@ -51,7 +51,7 @@
               </h5>
               <div class="stat-container">
                 <div class="stat-group">
-                  <div *ngFor="let stat of selectedPokemon.stats" class="stat">
+                  <div *ngFor="let stat of selectedPokemon2.stats" class="stat">
                     <span class="stat-name">{{
                       capitalizeFirstLetter(stat.stat.name)
                     }}</span>
