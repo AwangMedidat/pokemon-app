@@ -1,7 +1,10 @@
 <div class="container mt-5 mb-5">
+  <div class="mb-5 d-flex justify-content-center">
+    <button class="btn btn-primary glass-button" [routerLink]="['/compare']">Compare Pokemon</button>
+  </div>
   <div class="row">
     <div class="col-md-4 col-sm-4 col-lg-2" *ngFor="let e of data">
-      <div class="card spaced-card border-0 " [routerLink]="['/detail', e.name]">
+      <div class="card spaced-card border-0" [routerLink]="['/detail', e.name]">
         <div class="p-2">
           <img [src]="e.image" alt="{{ e.name }}" class="card-img-top" />
           <div class="card-body text-center">

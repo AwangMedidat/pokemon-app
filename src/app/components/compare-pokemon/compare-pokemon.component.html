@@ -1,0 +1,165 @@
+<div class="container mt-5 mb-5">
+  <!-- First Row -->
+  <div class="row">
+    <div class="col-md-4 col-sm-4 col-lg-2 c1">
+      <div class="card spaced-card">
+        <div class="p-5">
+          <div class="card-body text-center">
+            <div *ngIf="selectedPokemon; else noStats">
+              <h5 class="text-center">
+                {{ capitalizeFirstLetter(selectedPokemon.name) }} Stats
+              </h5>
+              <div class="stat-container">
+                <div class="stat-group">
+                  <div *ngFor="let stat of selectedPokemon.stats" class="stat">
+                    <span class="stat-name">{{
+                      capitalizeFirstLetter(stat.stat.name)
+                    }}</span>
+                    <span class="stat-value">{{ stat.base_stat }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #noStats>
+              <p class="text-center">No Pokemon selected yet.</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-lg-8">
+      <div class="card spaced-card">
+        <div class="card spaced-card">
+          <div class="p-5">
+            <canvas id="chart1Canvas" style="height: 300px"></canvas>
+          </div>
+        </div>
+        <div class="card spaced-card">
+          <div class="p-5">
+            <canvas id="chart2Canvas" style="height: 300px"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-4 col-lg-2 c2">
+      <div class="card spaced-card">
+        <div class="p-5">
+          <div class="card-body text-center">
+            <div *ngIf="selectedPokemon2; else noStats2">
+              <h5 class="text-center">
+                {{ capitalizeFirstLetter(selectedPokemon2.name) }} Stats
+              </h5>
+              <div class="stat-container">
+                <div class="stat-group">
+                  <div *ngFor="let stat of selectedPokemon.stats" class="stat">
+                    <span class="stat-name">{{
+                      capitalizeFirstLetter(stat.stat.name)
+                    }}</span>
+                    <span class="stat-value">{{ stat.base_stat }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <ng-template #noStats2>
+              <p class="text-center">No Pokemon selected yet.</p>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Row -->
+  <div class="row mt-4">
+    <div class="col-md-6 col-sm-6 col-lg-6">
+      <div class="card">
+        <div class="p-5 scrollable-cards">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-2" *ngFor="let e of data">
+              <div
+                class="card spaced-card border-0 clickable-card"
+                (click)="toggleStats(e)"
+              >
+                <div class="p-2">
+                  <img
+                    [src]="e.image"
+                    alt="{{ e.name }}"
+                    class="card-img-top"
+                    (load)="onImageLoad()"
+                    (error)="onImageError()"
+                  />
+                  <div class="card-body text-center">
+                    <p class="card-title card-title-sm">
+                      {{ capitalizeFirstLetter(e.name) }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav *ngIf="totalPages > 1" class="mt-4">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <a class="page-link" (click)="prevPage()" tabindex="-1"><</a>
+              </li>
+              <li class="page-item">
+                <span class="page-link">{{ currentPage }}</span>
+              </li>
+              <li
+                class="page-item"
+                [class.disabled]="currentPage === totalPages"
+              >
+                <a class="page-link" (click)="nextPage()">></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-6">
+      <div class="card">
+        <div class="p-5 scrollable-cards">
+          <div class="row">
+            <div class="col-md-4 col-sm-4 col-lg-2" *ngFor="let e of data2">
+              <div
+                class="card spaced-card border-0 clickable-card"
+                (click)="toggleStats2(e)"
+              >
+                <div class="p-2">
+                  <img
+                    [src]="e.image"
+                    alt="{{ e.name }}"
+                    class="card-img-top"
+                  />
+                  <div class="card-body text-center">
+                    <p class="card-title card-title-sm">
+                      {{ capitalizeFirstLetter(e.name) }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <nav *ngIf="totalPages2 > 1" class="mt-4">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" [class.disabled]="currentPage2 === 1">
+                <a class="page-link" (click)="prevPage2()" tabindex="-1"><</a>
+              </li>
+              <li class="page-item">
+                <span class="page-link">{{ currentPage2 }}</span>
+              </li>
+              <li
+                class="page-item"
+                [class.disabled]="currentPage2 === totalPages2"
+              >
+                <a class="page-link" (click)="nextPage2()">></a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
